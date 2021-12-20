@@ -1,8 +1,9 @@
-import { defineConfig } from 'vite'
-import vue from '@vitejs/plugin-vue'
-import vuetify from '@vuetify/vite-plugin'
+import { defineConfig } from "vite";
+import vue from "@vitejs/plugin-vue";
+import vuetify from "@vuetify/vite-plugin";
+import { VitePWA } from "vite-plugin-pwa";
 
-import path from 'path'
+import path from "path";
 
 // https://vitejs.dev/config/
 export default defineConfig({
@@ -12,13 +13,48 @@ export default defineConfig({
     vuetify({
       autoImport: true,
     }),
+    VitePWA({
+      mode: "production",
+      base: "/",
+      srcDir: "src",
+      filename: "sw.ts",
+      includeAssets: ["/favicon.png"],
+      strategies: "injectManifest",
+      manifest: {
+        name: "IT Support App - MGISolutions",
+        short_name: "ITSupportApp",
+        theme_color: "#013253",
+        start_url: "/",
+        display: "standalone",
+        background_color: "#013253",
+        icons: [
+          {
+            src: "icon-192.png",
+            sizes: "192x192",
+            type: "image/png",
+          },
+          // {
+          //   src: "/icon-512.png",
+          //   sizes: "512x512",
+          //   type: "image/png",
+          // },
+          {
+            src: "icon-192.png",
+            sizes: "192x192",
+            type: "image/png",
+            purpose: "any maskable",
+          },
+        ],
+      },
+    }),
   ],
-  define: { 'process.env': {} },
+  define: { "process.env": {} },
   resolve: {
     alias: {
-      '@': path.resolve(__dirname, 'src'),
+      "@": path.resolve(__dirname, "src"),
     },
   },
+  css: { preprocessorOptions: { scss: { charset: false } } },
   /* remove the need to specify .vue files https://vitejs.dev/config/#resolve-extensions
   resolve: {
     extensions: [
@@ -32,4 +68,4 @@ export default defineConfig({
     ]
   },
   */
-})
+});
