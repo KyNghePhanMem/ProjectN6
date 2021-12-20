@@ -1,5 +1,10 @@
 module.exports = {
-  content: ['./public/**/*.html', './src/**/*.{vue,html,js,ts,jsx,tsx}'],
+  mode:"jit",
+  content: [
+    // Example content paths...
+    './public/**/*.html',
+    './src/**/*.{js,jsx,ts,tsx,vue}',
+  ],
   theme: {
     extend: {},
   },
