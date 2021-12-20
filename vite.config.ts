@@ -55,6 +55,24 @@ export default defineConfig({
     },
   },
   css: { preprocessorOptions: { scss: { charset: false } } },
+  build: {
+    rollupOptions: {
+      // https://rollupjs.org/guide/en/#outputmanualchunks
+      output: {
+        manualChunks: {
+          "group-guest": [
+            "./src/views/login/index.vue",            
+            "./src/views/login/forgot.vue",            
+            "./src/views/login/reset.vue",            
+          ],
+          "group-user": [
+            "./src/views/profile/index.vue",            
+            "./src/views/dashboard.vue",            
+          ],
+        },
+      },
+    },
+  },
   /* remove the need to specify .vue files https://vitejs.dev/config/#resolve-extensions
   resolve: {
     extensions: [
