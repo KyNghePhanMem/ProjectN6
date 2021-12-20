@@ -10,11 +10,11 @@
     "sourceMap": true,
     "resolveJsonModule": true,
     "esModuleInterop": true,
-    // "baseUrl": "src", // This must be specified if "paths" is.
+    "baseUrl": ".",
     "paths": {
       "@/*": ["src/*"]
     },
-    "lib": ["esnext", "dom"]
+    "lib": ["esnext", "dom", "WebWorker"]
   },
   "include": [
     "src/**/*.ts",
@@ -23,5 +23,12 @@
     "tests/**/*.ts",
     "tests/**/*.tsx"
   ],
-  "exclude": ["node_modules"]
+  "exclude": [
+    "dist",
+    "node_modules",
+    "test",
+    "test.ts",
+    "**/*.spec.ts",
+    "**/*.worker.ts"
+  ]
 }
