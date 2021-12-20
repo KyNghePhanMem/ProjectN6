@@ -1,4 +1,4 @@
-
+/* ./src/index.css */
 .mgi__form-layout{
     @apply  absolute top-0 left-0 right-0 bottom-0 bg-[#6a88a1]
 }
@@ -39,7 +39,7 @@
     @apply flex flex-col mb-2 relative
 }
 .mgi__form__password .mgi__form__eye2icon,
-.mgi__form__password img{
+.mgi__form__password .mgi__form__eye1icon{
     @apply h-[15px] absolute top-[34px] right-2 cursor-pointer
 }
 

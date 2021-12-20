@@ -6,7 +6,7 @@
         :height="heightbysize"
     >
         <path 
-            :class="color"
+            :fill="fill"
             :d="path"
         />
     </svg>
@@ -17,10 +17,6 @@
 export default {
     name:'Icon',
     props:{
-        color:{
-            type:String,
-            required:false
-        },
         path:{
             type:String,
             required:true
@@ -38,15 +34,3 @@ export default {
     },
 }
 </script>
-
-<style scoped>
-    .white{
-        fill: #FFFFFF;
-    }
-    .black{
-        fill: #212121;
-    }
-    .gray{
-        fill: gray;
-    }
-</style>

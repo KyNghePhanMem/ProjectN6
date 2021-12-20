@@ -21,8 +21,9 @@
             <span v-if="v$.password.$error" class="mgi__form__password-validate">
                 The field is required
             </span>
-            <img @click="onClickEye" v-if="eyeCheckPass" src="/src/assets/action-icon/eye_1.svg" alt="" >
-            <svg-login class="mgi__form__eye2icon" @click="onClickEye" v-else :heightbysize="15" :path="icons.eyesecondIcon" :widthbysize="15" color="gray" />
+            <!-- cái icon eye 1 này nó lỗi k xem được ạ  -->
+            <!-- <svg-login class="mgi__form__eye1icon" @click="onClickEye" v-if="eyeCheckPass" :heightbysize="15" :path="icons.eyefirstIcon" :widthbysize="15" fill="gray"  /> -->
+            <svg-login class="mgi__form__eye2icon" @click="onClickEye" v-else :heightbysize="15" :path="icons.eyesecondIcon" :widthbysize="15" fill="gray" />
           </label>
           <div class="mgi__form__require">
             <label for="remember" class="mgi__form__checkbox ">
@@ -42,7 +43,7 @@
       </form> 
     <div class="mgi__login-error" v-if="checkError">
       <div class="mgi__login-error__block">
-        <svg-login :heightbysize="25" :path="icons.errorIcon" :widthbysize="16" color="white" />
+        <svg-login :heightbysize="25" :path="icons.errorIcon" :widthbysize="16" fill="white" />
         <span>Email/Usernam or password is incorrect.</span>
       </div>
     </div> 
@@ -50,11 +51,11 @@
 </template>
 
 <script>
-import {eyefirstIcon,eyesecondIcon,errorIcon} from '/src/plugins/icons.ts';
+import {eyefirstIcon,eyesecondIcon,errorIcon} from '@/plugins/icons';
 import  useValidate  from '@vuelidate/core';
 import {required} from '@vuelidate/validators';
 import { defineComponent,computed, reactive, ref } from 'vue';
-import SvgLogin from '/MGISolutions/src/components/SvgLogin.vue';
+import SvgLogin from '@/components/SvgLogin.vue';
 
 
 export default defineComponent({
