@@ -7,11 +7,9 @@
   >
     <div class="text-center" style="margin-top: -200px">
       <p class="mb-0 text-uppercase" style="font-size: 26px">
-        <strong> USER PROFILE </strong>
+        <strong> FORGOT PASSWORD </strong>
       </p>
-      <h1 style="font-size: 50px; line-height: 60px" class="text-uppercase">
-        Welcome Back To IT-Support app
-      </h1>
+      <h1 style="font-size: 50px; line-height: 60px" class="text-uppercase">Welcome Back To IT-Support app</h1>
     </div>
   </v-card>
 </template>
@@ -20,7 +18,7 @@
 import { defineComponent } from "vue";
 
 export default defineComponent({
-  name: "Home",
+  name: "Forgot password",
   // components: {
   // },
   setup() {

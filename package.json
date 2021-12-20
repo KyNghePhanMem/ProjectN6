@@ -5,15 +5,23 @@
     "dev": "vite preview",
     "build": "vite build",
     "serve": "vite",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "lint:script": "eslint --ext .ts,vue --ignore-path .gitignore ."
   },
   "dependencies": {
     "@mdi/font": "5.9.55",
+    "@types/lodash": "^4.14.178",
+    "@vee-validate/rules": "^4.5.7",
     "axios": "^0.24.0",
+    "lodash": "^4.17.21",
+    "lottie-web": "^5.8.1",
+    "moment": "^2.29.1",
     "roboto-fontface": "*",
+    "vee-validate": "^4.5.7",
     "vue": "^3.2.25",
     "vue-router": "^4.0.12",
     "vuetify": "^3.0.0-alpha.0",
+    "vuex": "^4.0.2",
     "webfontloader": "^1.0.0"
   },
   "devDependencies": {

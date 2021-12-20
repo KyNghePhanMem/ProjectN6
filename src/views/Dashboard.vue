@@ -1,32 +1,39 @@
 <template>
-  <svg-icon
-    overflow="unset"
-    content-class="icon-home"
-    width="45px"
-    height="45px"
-    style="enable-background: new 0 0 24 24"
-    :path="icons.iconHome"
-  />  
+  <v-card
+    flat
+    height="100%"
+    style="background-position-y: bottom; overflow: hidden auto"
+    class="white d-flex justify-center align-center"
+  >
+    <div class="text-center" style="margin-top: -200px">
+      <p class="mb-0 text-uppercase" style="font-size: 26px">
+        <strong>
+          HELLO
+          <span class="warning--text"> {{ displayName }}</span>
+          <span>!</span>
+        </strong>
+      </p>
+      <h1 style="font-size: 50px; line-height: 60px" class="text-uppercase">
+        Welcome Back To IT-Support app
+      </h1>
+    </div>
+  </v-card>
 </template>
 
 <script lang="ts">
 import { defineComponent } from "vue";
-// import HelloWorld from "@/components/HelloWorld.vue"; // @ is an alias to /src
-import { iconHome, iconTicket, iconAdmin } from "@/plugins/icons";
 
 export default defineComponent({
-  // components: {
-  //   HelloWorld,
-  // },
+  name: "Home",
+  components: {
+  },
   setup() {
-    return {
-      icons: {
-        iconHome,
-        iconTicket,
-        iconAdmin,
-      },
-      translate: "", //translate(-80.758 -280.158)
-    };
+
+  },
+  computed: {
+    displayName() {
+      return "[UserName]"; 
+    },
   },
 });
 </script>
