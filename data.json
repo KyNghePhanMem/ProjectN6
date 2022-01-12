@@ -1,0 +1,43 @@
+{
+    "User": [{
+                "id": 1,
+                "username": "admin",
+                "password": "admin"
+            }, {
+                "id": 2,
+                "username": "kboig1",
+                "password": "542c7yumm"
+            }, {
+                "id": 3,
+                "username": "ebranford2",
+                "password": "55xTl3"
+            }, {
+                "id": 4,
+                "username": "rmatthisson3",
+                "password": "nnnQD0G"
+            }, {
+                "id": 5,
+                "username": "cshury4",
+                "password": "IhK1HfbYWIBd"
+            }, {
+                "id": 6,
+                "username": "tchese5",
+                "password": "FROPz8eY"
+            }, {
+                "id": 7,
+                "username": "cleblanc6",
+                "password": "QzCaQ7"
+            }, {
+                "id": 8,
+                "username": "vasquez7",
+                "password": "Qxp9011ztR"
+            }, {
+                "id": 9,
+                "username": "aredan8",
+                "password": "cWxBPJlDSc"
+            }, {
+                "id": 10,
+                "username": "lwittier9",
+                "password": "r7lJIK8rbEN"
+            }]      
+}
