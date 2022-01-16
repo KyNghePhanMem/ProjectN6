@@ -13,8 +13,7 @@ const checklogin= async () =>{
         const arr = data;
         for(let i=0;i<arr.length;i++){
             if(arr[i].username == username.value && arr[i].password == password.value)
-            {
-               
+            {          
                 if(username.value=='admin' && password.value=='admin'){
                     window.location.href="../Dasboard/dashboard.html";
                 }
