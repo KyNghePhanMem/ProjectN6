@@ -1,4 +1,8 @@
 {
+    "session":{
+        "sessionId":1,
+        "sessionUser":0
+    },
     "User": [{
                 "id": 1,
                 "username": "admin",
