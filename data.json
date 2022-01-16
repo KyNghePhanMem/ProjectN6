@@ -43,5 +43,9 @@
                 "id": 10,
                 "username": "lwittier9",
                 "password": "r7lJIK8rbEN"
+            },{
+                "id": 11,
+                "username": "user2",
+                "password": "user2"
             }]      
 }
