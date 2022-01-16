@@ -1,10 +1,12 @@
 module.exports = {
   content: [
-    // Example content paths...
     './src/**/*.{js,html}',
   ],
   theme: {
-    extend: {},
+    fontFamily: {
+      sans: ['"Open Sans"', 'sans-serif'],
+    },
+    extends:{},
   },
   plugins: [],
 }
