@@ -34,8 +34,8 @@
               >
                 Sign Up
               </div>
-              <form onsubmit="return false;" autocomplete="off" >
-                <div class="relative">
+              <form onsubmit="return false;" autocomplete="off" id="register-form" >
+                <div class="relative mb-[30px]">
                   <label
                     for="username"
                     class="absolute text-[#212121] top-[10px] left-2"
@@ -47,10 +47,10 @@
                     id="username"
                     name="username"
                     placeholder="Username"
-                    class="bg-[#f6f6f6] hover:border-gray-700 focus:border-gray-700 placeholder:text-[#292B49] h-[45px] w-full px-[40px] text-[#293B49] outline-none border-b-2 mb-[30px]"
+                    class="bg-[#f6f6f6] hover:border-gray-700 focus:border-gray-700 placeholder:text-[#292B49] h-[45px] w-full px-[40px] text-[#293B49] outline-none border-b-2"
                   />
                 </div>
-                <div class="relative">
+                <div class="relative mb-[30px]"> 
                     <label
                       for="email"
                       class="absolute text-[#212121] top-[10px] left-2"
@@ -62,10 +62,10 @@
                       id="email"
                       name="email"
                       placeholder="Your Email"
-                      class="bg-[#f6f6f6] hover:border-gray-700 focus:border-gray-700 placeholder:text-[#292B49] h-[45px] w-full px-[40px] text-[#293B49] outline-none border-b-2 mb-[30px]"
+                      class="bg-[#f6f6f6] hover:border-gray-700 focus:border-gray-700 placeholder:text-[#292B49] h-[45px] w-full px-[40px] text-[#293B49] outline-none border-b-2"
                     />
                   </div>
-                <div class="relative">
+                <div class="relative mb-[25px]">
                   <label
                     for="password"
                     class="absolute text-[#212121] top-[10px] left-2"
@@ -77,10 +77,10 @@
                     id="password"
                     name="password"
                     placeholder="Password"
-                    class="bg-[#f6f6f6] hover:border-gray-700 focus:border-gray-700 placeholder:text-[#292B49] h-[45px] w-full px-[40px] text-[#293B49] outline-none border-b-2 mb-[25px]"
+                    class="bg-[#f6f6f6] hover:border-gray-700 focus:border-gray-700 placeholder:text-[#292B49] h-[45px] w-full px-[40px] text-[#293B49] outline-none border-b-2 "
                   />
                 </div>
-                <div class="relative">
+                <div class="relative mb-[25px]">
                     <label
                       for="confirmpassword"
                       class="absolute text-[#212121] top-[10px] left-2"
@@ -92,12 +92,12 @@
                       id="confirmpassword"
                       name="confirmpassword"
                       placeholder="Confirm Password"
-                      class="bg-[#f6f6f6] hover:border-gray-700 focus:border-gray-700 placeholder:text-[#292B49] h-[45px] w-full px-[40px] text-[#293B49] outline-none border-b-2 mb-[25px]"
+                      class="bg-[#f6f6f6] hover:border-gray-700 focus:border-gray-700 placeholder:text-[#292B49] h-[45px] w-full px-[40px] text-[#293B49] outline-none border-b-2"
                     />
                 </div>
                 <label
                   for="agree"
-                  class="flex items-center justify-between w-full cursor-pointer mb-[25px]"
+                  class="flex relative items-center justify-between w-full cursor-pointer mb-[25px]"
                 >
                   <div>
                     <input
@@ -131,6 +131,19 @@
         </div>
       </div>
     </div>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"
+      integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.3/jquery.validate.min.js"
+      integrity="sha512-37T7leoNS06R80c8Ulq7cdCDU5MNQBwlYoy1TX/WUsLFC2eYNqtKlV0QjH7r8JpG/S0GUMZwebnVFLPd6SU5yg=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
+    <script src="../JS/Validation.js"></script>
 </body>
 
 </html>

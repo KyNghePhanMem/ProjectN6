@@ -7,3 +7,19 @@
 img{
     margin: 0;
 }
+
+#email-error,
+#confirmpassword-error,
+#password-error,
+#username-error{
+    padding-left: 38px;
+    font-size: 14px;
+    color: #b94a48;
+}
+#agree-error{
+    position: absolute;
+    padding-left: 10px;
+    font-size: 14px;
+    color: #b94a48;
+    bottom: 20px;
+}
