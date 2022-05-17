@@ -1,0 +1,93 @@
+.modalBase{
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    display: flex;
+    z-index: 20;
+}
+.modalBase__overlay{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+#confirm .modalBase__body{
+    height: auto;
+    width: 400px;
+    margin: auto;
+    background:#FFFFFF;
+    z-index: 21;
+    border-radius: 5px;
+}
+#infomationTicket .modalBase__body{
+    height: auto;
+    width: 800px;
+    margin: auto;
+    background-image: linear-gradient(#FFFFFF,#CC724C);
+    z-index: 21;
+    border-radius: 5px;
+}
+.modalBase__body{
+    height: 900px;
+    width: 1100px;
+    margin: auto;
+    background-image: linear-gradient(#FFFFFF,#CC724C);
+    z-index: 21;
+    border-radius: 5px;
+}
+.modal__body__header::after{
+    position: absolute;
+    content: "";
+    top: 80px;
+    left: 20px;
+    width: calc(100% - 40px);
+    height: 2px;
+    background-color: #293B49;
+}
+.modal__body__chair__title::after,
+.modal__body__time__title::after{
+    position: absolute;
+    content: "";
+    top: 40px;
+    left: 0px;
+    width: 150px;
+    height: 2px;
+    background-color: #293B49;
+}
+.modal__body__time-item:hover{
+    background: #293B49;
+    color: #FFFFFF;
+    transition: 0.5s;
+    cursor: pointer;
+}
+#confirm,
+#ticketModal{
+    display: none;
+    animation: showDetail 0.3s ease-in-out;
+    z-index: 1000;
+}
+
+@keyframes showDetail {
+    0% {
+        opacity: 0.2;
+    }
+    25% {
+        opacity: 0.4;
+    }
+    50% {
+        opacity: 0,6;
+    }
+    75% {
+        opacity: 0,8;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+.modal__body__listchair{
+    /* display: none;
+    animation: showDetail 0.3s ease-in-out;
+    z-index: 1001; */
+}

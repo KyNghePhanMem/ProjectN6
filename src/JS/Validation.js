@@ -1,21 +1,19 @@
+
 $("#login-form").validate({
     rules:{
         username:"required",
         password:{
             required : true,
-            minlength : 6
+            minlength : 5
         }
     },
     messages:{
         username:"The Username field is required",
         password:{
             required:"The Password field is required",
-            minlength:"Your password must be 6 characters long"
+            minlength:"Your password must be 5 characters long"
         }
     },
-    submitHandler: function(form) {
-        form.submit();
-    }
 });
 
 $("#register-form").validate({
@@ -27,11 +25,11 @@ $("#register-form").validate({
         },
         password:{
             required : true,
-            minlength : 6
+            minlength : 5
         },
         confirmpassword:{
             required : true,
-            minlength : 6,
+            minlength : 5,
             equalTo:"#password"
         },
         agree:"required",
@@ -44,18 +42,30 @@ $("#register-form").validate({
         },
         password:{
             required:"The Password field is required",
-            minlength:"Your password must be 6 characters long"
+            minlength:"Your password must be 5 characters long"
         },
         confirmpassword:{
             required:"The Confirm Password field is required",
-            minlength:"Your password must be 6 characters long",
+            minlength:"Your password must be 5 characters long",
             equalTo:"The confirm password is incorrect"
         },
         agree:{
             required: "You must be agree all state",
         }
     },
-    submitHandler: function(form) {
-        form.submit();
-    }
 });
+
+$("#forgot-form").validate({
+    rules:{
+        email:{
+            required : true,
+            email:true
+        }
+    },
+    messages:{
+        email:{
+            required: "The Email field is required",
+            email : "The Email must be @ character"
+        }
+    }
+})

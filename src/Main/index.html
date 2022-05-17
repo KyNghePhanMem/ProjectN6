@@ -5,8 +5,337 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+      integrity="sha512-Fo3rlrZj/k7ujTnHg4CGR2D7kSs0v4LLanw2qksYuRlEzO+tcaEPQogQ0KaoGN26/zrn20ImR1DfuLWnOo7aBA=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link rel="stylesheet" href="../style/reset.css" />
+    <link
+    rel="stylesheet"
+    type="text/css"
+        href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"
+      />
+    <link rel="stylesheet" href="../style/style.css" />
+    <link rel="stylesheet" href="../style/main.css" />
+    <link rel="stylesheet" href="../style/modal.css">
 </head>
 <body>
-    <h1>Hello Main</h1>
+  <div class="h-full w-full absolute hidden" id="infomationTicket">
+    <div class="modalBase">
+      <div class="modalBase__overlay">
+  
+      </div>
+      <div class="modalBase__body p-[20px]">
+        <div class="modal__body__inner h-full flex">
+          <div class="modal__body__image" id="imgInfo">
+            <img src="../img/Dr-Strange.png" alt="" class="h-[450px] mt-[20px] ml-[20px] mb-[20px] rounded-[10px]">
+          </div>
+          <div class="modal__body__info mt-[20px] ml-[20px] text-[22px] flex flex-col gap-[10px]">
+            <div class="flex flex-col gap-[10px]" id="ticketInfo">
+            </div>
+            <div class="flex justify-center mb-[50px]">
+              <img src="../img/websiteQRCode_noFrame.png" alt="" class="w-[200px] h-[180px]">
+            </div>
+            <div>
+              <button onclick="handleGoBack()" class="text-white !ml-[180px] font-bold bg-red-600 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 dark:focus:ring-red-800  rounded-lg text-sm inline-flex items-center px-5 py-2.5 text-center mr-2">
+                Trở Về Trang Chủ
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div> 
+  <div class="h-full w-full absolute hidden" id="confirm">
+    <div class="modalBase" >
+      <div class="modalBase__overlay">
+  
+      </div>
+      <div class="modalBase__body">
+        <div class="modal__body__inner h-full">
+          <div class="relative flex justify-end font-bold h-[60px] px-[20px] pt-[20px] text-[24px]">
+            <div onclick="closeModalConfirm()" class="cursor-pointer h-[40px] w-[40px] flex items-center justify-center rounded-[50%] hover:bg-[#D4D7DA]">
+              <i class="fa-solid fa-xmark"></i>
+            </div>
+          </div>
+          <div class="modal__body__icon text-[50px] text-center mt-[-10px] mb-[12px] text-[#ccc]">
+            <i class="fa-solid fa-circle-check"></i>
+          </div>
+          <div class="modal__body__desc text-[24px] font-semibold mb-[20px] text-center">
+            <p>Bạn có xác nhận đặt vé ?</p>
+          </div>
+          <div class="modal__body__footer mb-[40px] flex gap-x-[10px] justify-center items-center">
+            <button onclick="closeModalConfirm()" class="text-gray-500  font-bold bg-white hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-gray-200 rounded-lg border border-gray-200 text-sm  px-5 py-2.5 hover:text-gray-900 focus:z-10 dark:bg-gray-700 dark:text-gray-300 dark:border-gray-500 dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-gray-600">Hủy</button>
+            <button onclick="handleConfirm()" class="text-white  font-bold bg-red-600 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 dark:focus:ring-red-800  rounded-lg text-sm inline-flex items-center px-5 py-2.5 text-center mr-2">
+                Xác Nhận
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>  
+  <div class="h-full w-full absolute" id="ticketModal">
+    <div class="modalBase" >
+      <div class="modalBase__overlay">
+  
+      </div>
+      <div class="modalBase__body">
+        <div class="modal__body__inner h-full">
+          <div class="modal__body__header relative flex items-center justify-between font-bold h-[80px] px-[20px] py-[20px] text-[24px]">
+            <div>
+              DETAIL TICKET
+            </div>
+            <div onclick="closeModal()" class="mr-[20px] cursor-pointer h-[40px] w-[40px] flex items-center justify-center rounded-[50%] hover:bg-[#D4D7DA]">
+              <i class="fa-solid fa-xmark"></i>
+            </div>
+          </div>
+          <div class="modal__body__content flex h-[calc(100%-80px)]">
+            <div class="modal__body__image" id="detailImage">
+              <!-- <img src="../img/Dr-Strange.png" alt="" class="h-[450px] mt-[20px] ml-[20px] rounded-[10px]"> -->
+            </div>
+            <div class="modal__body__ticketDetail w-[calc(100%-80px)] px-[40px] py-[20px]" >
+              <div id="detailBefore">
+                <div class="modal__body__name w-full text-center text-[24px] font-bold mb-[12px]" id="detailName">
+                
+                </div>
+                <div class="modal__body__time mb-[12px]">
+                  <div class="modal__body__time__title relative text-left text-[20px] font-bold mb-[40px]">
+                    Suất Chiếu Hôm Nay
+                  </div>
+                  <div class="modal__body__listtime flex flex-wrap gap-[8px]" id="listTime">
+                    
+                  </div>
+                </div>
+                <div class="modal__body__listchair">
+                  <div class="modal__body__chair__title relative text-left text-[20px] font-bold mb-[40px]">
+                    Danh Sách Ghế Ngồi
+                  </div>
+                  <div class="w-[500px] h-[40px] bg-gray-700 text-[20px] font-bold text-[#FFFFFF] flex m-auto justify-center items-center !mb-[20px]">
+                    <h3>Screen</h3>
+                  </div>
+                  <div class="flex gap-x-[125px] mb-[40px]">
+                    <div class="listName__chair w-[40px] flex flex-col gap-y-[30px] font-bold">
+                      <div class="item_name-chair">
+                        A
+                      </div>
+                      <div class="item_name-chair">
+                        B
+                      </div>
+                      <div class="item_name-chair">
+                        C
+                      </div>
+                      <div class="item_name-chair">
+                        D
+                      </div>
+                      <div class="item_name-chair">
+                        E
+                      </div>
+                    </div>
+                    <div class="listChair flex flex-col flex-wrap max-h-[320px] gap-x-[50px] gap-y-[30px]" id="listChair">
+                      
+                    </div>
+                  </div>
+                  <div class="ticket__choose__list mb-[20px] flex items-center gap-[10px]" id="listChoose">
+                    
+                  </div>  
+                  <div class="cinestar__film__footer--ticket text-[20px] w-[180px] h-[150] px-[10px] py-[5px] text-center rounded-tl-[10px] rounded-br-[10px] bg-[#EE118B] float-right">
+                    <div class="font-bold text-[#FFFFFF] flex justify-center items-center cursor-pointer" onclick="handleClickBefore()">
+                      Đặt Vé
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div id="detailAfter" >
+                <div class="h-full max-h-[700px] mb-[20px]">
+                  <div id="table-block" class="relative h-auto max-h-[400px] overflow-x-auto shadow-md sm:rounded-lg mb-[20px]">
+                    <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
+                        <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+                            <tr class="font-bold">
+                                <th scope="col" class="px-6 py-3">
+                                    Tên Phim
+                                </th>
+                                <th scope="col" class="px-6 py-3">
+                                    Mã Số Ghế
+                                </th>
+                                <th scope="col" class="px-6 py-3">
+                                    Loại Ghế
+                                </th>
+                                <th scope="col" class="px-6 py-3">
+                                    Giá
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody id="tableChoose">
+                        </tbody>
+                    </table>
+                  </div>
+                  <div class="h-[500px]">
+                    <div class="modal__body__time__title relative text-left text-[20px] font-bold mb-[40px]">
+                      Hãy Chọn Đồ Dùng
+                    </div>
+                    <div class="flex gap-x-[30px]">
+                      <div class="w-[350px]">
+                        <label for="combo" class="block mb-2 text-[20px]  text-gray-900 dark:text-gray-400 font-bold">Combo</label>
+                        <select id="combo" onchange="pickCombo()" class="block p-2 mb-6 w-full text-sm text-gray-900 outline-none bg-gray-50 rounded-lg border border-gray-300 focus:ring-slate-400 focus:border-slate-500 dark:bg-slate-400 dark:border-slate-400 dark:placeholder-gray-400 dark:text-white dark:focus:ring-slate-400 dark:focus:border-slate-400">
+                          <option selected value="0">Chọn combo kèm theo</option>
+                          <option value="1">Bắp Rang Bơ x Pepsi</option>
+                          <option value="2">Bắp Pho Mai x Pepsi</option>
+                          <option value="3">Khoai Lang Lắc  x Pepsi</option>
+                        </select>
+                      </div>
+                      <div class="combo__price mb-[40px]" id="priceCombo">
+                      </div>
+                    </div>
+                    <div class="combo__price__total w-[735px]" id="total">
+                    </div>
+                  </div>
+                </div>
+                <div class="flex justify-end gap-x-[20px]">
+                  <div onclick="backToDetail()" class="cinestar__film__footer--ticket text-[20px] w-[180px] h-[150] px-[10px] py-[5px] text-center rounded-tl-[10px] rounded-br-[10px] bg-[#D4D7DA] float-right">
+                    <div class="font-bold text-[#293B49] flex justify-center items-center cursor-pointer">
+                      Trở Lại
+                    </div>
+                  </div>
+                  <div onclick="showConfirm()"  class="cinestar__film__footer--ticket text-[20px] w-[180px] h-[150] px-[10px] py-[5px] text-center rounded-tl-[10px] rounded-br-[10px] bg-[#EE118B] float-right">
+                    <div class="font-bold text-[#FFFFFF] flex justify-center items-center cursor-pointer">
+                      Thanh Toán
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>  
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+    <div class="cinestar__main w-full h-full !overflow-x-hidden">
+      <div class="cinestar__navbar h-[80px] w-full flex justify-between items-center mb-[50px]">
+        <div class="pl-[20px] h-auto cursor-pointer">
+          <a href="../Main/index.html">
+            <img src="../img/Logo-login.png" class="w-[180px]" alt="logo">
+          </a>
+        </div>
+        <div class="pr-[20px] flex gap-x-[20px] items-center">
+          <div class="cinestar__search-bar py-[10px] w-[200px] bg-[#D4D7DA] rounded-[50px] flex gap-x-[5px]">
+            <div class="cinestar__icon-search ml-[15px] mr-[10px]">
+              <i class="fas fa-search"></i>
+            </div>
+            <div class="w-full h-auto">
+              <input type="text" id="search-bar" name="search-bar" class="w-full h-auto" placeholder="Search">
+            </div>
+          </div>
+          <div class="cinestar__contact text-[22px] cursor-pointer">
+            <i class="fa-solid fa-phone"></i>          
+          </div>
+          <div class="cinestar__user rounded-[50px] px-[10px] relative">
+            <div class="flex items-center gap-x-[10px] cinestar__user__block" onclick="onShowDDL();event.stopPropagation();">
+              <div class="cinestar__name text-[16px] leading-[30px]  font-bold text-[#FFFFFF] break-words select-none cursor-pointer">
+                Username
+              </div>
+              <div class="cinestar__avatar">
+                <i class="fa-solid fa-user"></i>
+              </div>
+            </div>
+            <div class="h-[10px] w-full !bg-none absolute top-[30px] right-0"></div>
+            <div class="cinestar__dropdown__user showDDL absolute top-[40px] right-0 bg-gray-300 text-[#293B49] rounded-[3px] text-[14px] w-[150px] py-[10px] px-[8px]">
+              <div class="cinestar__infomation whitespace-nowrap h-auto py-[10px] hover:text-[#208DEC] hover:duration-300">
+                <a href="#">Đổi mật khẩu</a>
+              </div>
+              <div class="cinestar__logout h-auto py-[10px] hover:text-[#208DEC] hover:duration-300">
+                <a href="../Login/index.html">Đăng xuất</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="cinestar__body w-full h-auto grid grid-cols-5 overflow-y-hidden">
+        <div class="cinestar__sidebar col-span-1 pl-[20px]">
+          <div class="cinestar__sidebar-item font-sans  cursor-pointer py-[10px] font-semibold hover:text-[#EE118B] active-sidebar">
+            <div onclick="goHomePage()">
+              PHIM ĐANG CHIẾU
+            </div>
+          </div>
+          <div class="cinestar__sidebar-item font-sans  cursor-pointer py-[10px] font-semibold hover:text-[#EE118B]">
+            <div onclick="goPrice()">
+              GIÁ VÉ
+            </div>
+          </div>
+          <div class="cinestar__sidebar-item font-sans  cursor-pointer py-[10px] font-semibold hover:text-[#EE118B]">
+            <div onclick="goTicket()">
+              VÉ ĐÃ ĐẶT
+            </div>
+          </div>
+          <div class="cinestar__sidebar-item font-sans  cursor-pointer py-[10px] font-semibold hover:text-[#EE118B]">
+            <div onclick="goNews()">
+              TIN TỨC
+            </div>
+          </div>
+          <div class="cinestar__sidebar-item font-sans  cursor-pointer py-[10px] font-semibold hover:text-[#EE118B]">
+            <div onclick="goIntro()">
+              GIỚI THIỆU
+            </div>
+          </div>
+        </div>
+        <div class="cinestar__content col-span-4 w-full ">
+          <div class="cinestar__content__item w-full !block" id="homepage">
+            <div class="cinestar__top__titlle text-[18px] font-sans font-semibold mb-[40px] w-full">
+              Top Phim Hot
+            </div>
+            <div class="cinestar__top__slider w-full h-[400px] flex mb-[40px]">
+              <div>
+                <div class="cinestar__top__slider__item relative cursor-pointer">
+                  <img src="../img/top3.webp" alt="top1" class="h-[400px]  min-w-[calc(100%-80px)] m-auto !mr-[80px] rounded-[25px] object-bottom object-cover">
+                </div>
+              </div>
+              <div class="cinestar__top__slider__item cursor-pointer">
+                <img src="../img/top2.webp" alt="top2" class="h-[400px]  min-w-[calc(100%-80px)] m-auto !mr-[80px] rounded-[25px] object-top object-cover">
+              </div>
+              <div class="cinestar__top__slider__item cursor-pointer">
+                <img src="../img/top1slider.jpg" alt="top3" class="h-[400px]  min-w-[calc(100%-80px)] m-auto !mr-[80px] rounded-[25px] object-center object-cover">
+              </div>
+            </div>
+            <div class="cinestar__top__titlle text-[18px] font-sans font-semibold mb-[40px] w-full">
+              Phim Đang Chiếu
+            </div>
+            <div class="cinestar__listfilm mb-[80px]" id="listfilm">
+              
+            </div>
+          </div>
+          <div class="cinestar__content__item" id="price">
+            Giá
+          </div>
+          <div class="cinestar__content__item" id="ticket">
+            vé đã đặt
+          </div>
+          <div class="cinestar__content__item" id="news">
+            tin tức
+          </div>
+          <div class="cinestar__content__item" id="intro">
+            giới THIỆU
+          </div>
+        </div>
+      </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>
+    <script
+    type="text/javascript"
+    src="https://code.jquery.com/jquery-1.11.0.min.js"
+    ></script>
+    <script
+      type="text/javascript"
+      src="https://code.jquery.com/jquery-migrate-1.2.1.min.js"
+    ></script>
+    <script
+    type="text/javascript"
+    src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"
+    ></script>
+    <script src="../JS/main.js"></script>
+    <script src="../JS/slider.js"></script>
 </body>
 </html>

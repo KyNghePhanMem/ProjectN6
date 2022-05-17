@@ -1,5 +1,11 @@
+body,html{
+    height: 100%;
+}
 .cinestar__login{
     @apply text-center;
+}
+.layout__block{
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px, rgba(0, 0, 0, 0.22) 0px 10px 10px;
 }
 #login-layout{
     box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;
@@ -8,6 +14,23 @@ img{
     margin: 0;
 }
 
+@keyframes showDetail {
+    0% {
+        opacity: 0.2;
+    }
+    25% {
+        opacity: 0.4;
+    }
+    50% {
+        opacity: 0,6;
+    }
+    75% {
+        opacity: 0,8;
+    }
+    100% {
+        opacity: 1;
+    }
+}
 #email-error,
 #confirmpassword-error,
 #password-error,
@@ -22,4 +45,251 @@ img{
     font-size: 14px;
     color: #b94a48;
     bottom: 20px;
+}
+.login__notification-error{
+    box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
+    animation: notification 4s;
+}
+@keyframes notification {
+    0%  {
+        left: -350px;
+    }
+    25% {
+        left: 32px;
+    }
+    50% {
+        left: 32px;
+    }
+    75%{
+        left: 32px;
+    }
+    90%{
+        left: 32px;
+    }
+    100%{
+        left:-350px;
+    }
+}
+.forgot__email input{
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
+}
+.forgot__email input::placeholder{
+    color: gray;
+}
+#password:focus::placeholder,
+#username:focus::placeholder{
+    color: transparent;
+}
+.cinestar__main{
+    background-image: linear-gradient(#3D0520,#1B0830);
+    color: #FFFFFF;
+}
+#search-bar{
+    background: none;
+    outline: none;
+    color: #293B49;
+}
+.cinestar__search-bar:focus-within{
+    width: 500px;
+    transition: 0.5s;
+}
+.cinestar__search-bar:not(:focus-within){
+    width: 300px;
+    transition: 0.5s;
+}
+.cinestar__user:hover{
+    background-color: rgb(209 213 219);
+    transition: 0.3s;
+    cursor: pointer;
+}
+.showDDL{
+    transition: 0.5s;
+    display: none;
+}
+.active-sidebar{
+    color: #EE118B;
+}
+.cinestar__content__item{
+    display: none;
+}
+.cinestar__top__slider .slick-next{
+    /* position: absolute;
+    top: 50%;
+    right: 50px;
+    height: 40px;
+    width: 40px;
+    border-radius: 50%;
+    transform: translateY(-50%);
+    background: #FFFFFF;
+    color: black;
+    z-index: 10;
+    cursor: pointer; */
+    display: none!important;
+}
+.cinestar__top__slider .slick-prev{
+    /* position: absolute;
+    top: 50%;
+    height: 40px;
+    left: 50px;
+    width: 40px;
+    border-radius: 50%;
+    transform: translateY(-50%);
+    background: #FFFFFF;
+    color: black;
+    z-index: 10;
+    cursor: pointer; */
+    display: none!important;
+}
+.cinestar__top__slider .slick-dots{
+    position: absolute;
+    bottom: 20px;
+    display: flex;
+    left: 50%;
+    transform:  translateX(-50%);
+    gap: 0px 25px;
+}
+.slick-dots button{
+    font-size: 0;
+    width: 80px;
+    height: 10px;
+    border-radius: 10px;
+    background-color: #FFFFFF;
+    border: none;
+    outline: none;
+}
+.slick-dots .slick-active button{
+    background-color: #810D53;
+}
+.cinestar__top__titlle{
+    position: relative;
+}
+.cinestar__top__titlle::after{
+    position: absolute;
+    content: "";
+    top: 30px;
+    left: 0px;
+    width: 100px;
+    height: 2px;
+    background-color: #FFFFFF;
+}
+#table-block::-webkit-scrollbar,
+.cinestar__main::-webkit-scrollbar{
+    width: 8px;
+    background-color: none;
+    border-radius: 4px;
+}
+#table-block::-webkit-scrollbar-thumb,
+.cinestar__main::-webkit-scrollbar-thumb{
+    background-color: #D4D7DA;
+    border-radius: 8px;
+}
+.cinestar__film__item{
+    cursor: pointer;
+    position: relative;
+}
+.cinestar__film__item:hover img{
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    bottom: 0;
+    left: 0;;
+    transform: translateY(-5px);
+    transition: 0.5s;
+}
+.cinestar__film__item:hover .cinestar__film__overlay{
+    display: block;
+    transform: translateY(-5px);
+    transition: 0.5s;
+}
+.cinestar__film__overlay{
+    background-color: rgba(0,0,0,0.5); /* Black background with opacity */
+    z-index: 2;
+    position: absolute;
+    top: 0px;
+    display: none;
+    cursor: pointer;
+}
+
+.cinestar__listfilm .slick-next{
+    position: absolute;
+    top: -50px;
+    right: 100px;
+    height: 40px;
+    width: 40px;
+    border-radius: 50%;
+    transform: translateY(-50%);
+    color: #FFFFFF;
+    z-index: 10;
+    cursor: pointer;
+}
+.cinestar__listfilm .slick-prev:hover,
+.cinestar__listfilm .slick-next:hover{
+    color: #EE118B;
+    transition: 0.3s;
+}
+.cinestar__listfilm .slick-prev{
+    position: absolute;
+    top: -50px;
+    right: 150px;
+    height: 40px;
+    width: 40px;
+    border-radius: 50%;
+    transform: translateY(-50%);
+    color: #FFFFFF;
+    z-index: 10;
+    cursor: pointer;
+}
+.cinestar__film__detail{
+    background: linear-gradient(180deg, rgba(233, 100, 164, 0.9887) -1.13%, rgba(242, 141, 21, 0.88) 18.93%); /* Black background with opacity */
+    display: none;
+    z-index: 2;
+    animation: showDetail 0.6s ease-in-out;
+}
+.cinestar__film__footer--trailer:hover i{
+    color: #E81414;
+    transition: 0.5s;
+}
+.cinestar__film__footer--trailer:hover{
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    transform: translateY(-5px);
+    transition: 0.5s;
+}
+.cinestar__film__footer--ticket:hover{
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    transform: translateY(-5px);
+    transition: 0.5s;
+}
+.cinestar__film__item:hover .cinestar__film__detail{
+    z-index: 2;
+    display: block;
+}
+.textCustom{
+    text-overflow: ellipsis;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  white-space: nowrap;
+  overflow: hidden;
+  width: 240px;
+}
+.textCustomDesc{
+    overflow: hidden;
+    word-break: break-word;
+   text-overflow: ellipsis;
+   display: -webkit-box;
+   -webkit-line-clamp: 3; /* number of lines to show */
+           line-clamp: 3; 
+   -webkit-box-orient: vertical;
+   z-index: 9999!important;
+}
+
+.item_name-chair{
+    text-align: center;
+    background: #D4D7DA;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 5px;
+}
+#detailAfter{
+    display: none;
 }

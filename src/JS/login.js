@@ -10,12 +10,14 @@ var password = document.querySelector("#password");
 
 
 
-const checklogin= async () =>{
+const checklogin= () =>{
     getDataUser(function(data){
+        let count=0;
         const arr = data;
         for(let i=0;i<arr.length;i++){
             if(arr[i].username == username.value && arr[i].password == password.value)
             {         
+                count++;
                 var option ={
                     id:0,
                 }; 
@@ -30,6 +32,11 @@ const checklogin= async () =>{
                     setDataSession(option);
                 }
             }
+        }
+        if(count==0 && $("#login-form").valid()){
+            const notify = document.getElementById("notifycation-login");
+            setTimeout(() => notify.classList.remove("hidden") ,500);
+            notify.classList.add("hidden");   
         }
     })
 }
