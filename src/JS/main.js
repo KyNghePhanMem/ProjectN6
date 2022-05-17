@@ -79,8 +79,6 @@ const getListFilm = async (url) => {
   applySlider();
 }
 getListFilm(listAPI);
-
-
 const applySlider = () => {
   $(document).ready(function(){
     $('.cinestar__listfilm').slick({
@@ -533,7 +531,7 @@ const handleGoBack = async () => {
       });
    const dataAfter = await response.json();
    document.getElementById("infomationTicket").classList.remove("!block");
-    totalPrice = 0,
+   totalPrice = 0,
     comboValue = 'Không',
     urlImg = '',
     arrChooseChair = [];
