@@ -532,17 +532,19 @@ const handleGoBack = async () => {
    const dataAfter = await response.json();
    document.getElementById("infomationTicket").classList.remove("!block");
    totalPrice = 0,
-  comboValue = 'Không',
-  urlImg = '',
-  idListChair = 0;
-  arrChooseChair = [];
-  document.getElementById("detailBefore").classList.remove("hidden");
-  document.getElementById("detailAfter").classList.remove("!block");
-  document.getElementById("listChair").innerHTML = ``;
-  document.getElementById("listChoose").innerHTML = ``;
-  document.getElementById("tableChoose").innerHTML = ``;
-  document.getElementById("priceCombo").innerHTML = ``;
-  document.getElementById("total").innerHTML = ``;
-  document.getElementById("combo").value = 0;
-  document.getElementById("total").innerHTML = ``;
+    comboValue = 'Không',
+    urlImg = '',
+    arrChooseChair = [];
+    idListChair = 0;
+    document.getElementById("ticketModal").classList.remove("!block");
+    document.getElementById("listTime").innerHTML = ``;
+    document.getElementById("listChair").innerHTML = ``;
+    document.getElementById("listChoose").innerHTML = ``;
+    document.getElementById("detailBefore").classList.remove("hidden");
+    document.getElementById("detailAfter").classList.remove("!block");
+    document.getElementById("tableChoose").innerHTML = ``;
+    document.getElementById("priceCombo").innerHTML = ``;
+    document.getElementById("total").innerHTML = ``;
+    document.getElementById("combo").value = 0;
+    document.getElementById("total").innerHTML = ``;
 }
