@@ -988,6 +988,9 @@ Ensure the default browser behavior of the `hidden` attribute.
 .w-\[150px\]{
     width: 150px;
 }
+.w-\[268px\]{
+    width: 268px;
+}
 .min-w-\[calc\(100\%-80px\)\]{
     min-width: calc(100% - 80px);
 }

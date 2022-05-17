@@ -257,14 +257,14 @@
           "id": 18,
           "category": "vip",
           "price": 60000,
-          "isActive": false,
+          "isActive": true,
           "name": "C4"
         },
         {
           "id": 19,
           "category": "vip",
           "price": 60000,
-          "isActive": false,
+          "isActive": true,
           "name": "D4"
         },
         {
@@ -544,14 +544,14 @@
           "id": 7,
           "category": "normal",
           "price": 50000,
-          "isActive": false,
+          "isActive": true,
           "name": "B2"
         },
         {
           "id": 8,
           "category": "normal",
           "price": 50000,
-          "isActive": false,
+          "isActive": true,
           "name": "C2"
         },
         {
@@ -579,14 +579,14 @@
           "id": 12,
           "category": "vip",
           "price": 60000,
-          "isActive": false,
+          "isActive": true,
           "name": "B3"
         },
         {
           "id": 13,
           "category": "vip",
           "price": 60000,
-          "isActive": false,
+          "isActive": true,
           "name": "C3"
         },
         {

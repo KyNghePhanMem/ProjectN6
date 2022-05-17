@@ -475,7 +475,7 @@ const handleConfirm = async  () => {
   document.getElementById("confirm").classList.remove("!block");
 
   document.getElementById("imgInfo").innerHTML = `
-    <img src="${urlImg}" alt="" class="h-[450px] mt-[20px] ml-[20px] mb-[20px] rounded-[10px]">
+    <img src="${urlImg}" alt="" class="h-[450px] w-[268px] mt-[20px] ml-[20px] mb-[20px] rounded-[10px]">
   `
   document.getElementById("ticketInfo").innerHTML = `
             <div>
@@ -530,4 +530,5 @@ const handleGoBack = async () => {
        body: JSON.stringify(putData)
       });
    const dataAfter = await response.json();
+   document.getElementById("infomationTicket").classList.remove("!block")
 }
