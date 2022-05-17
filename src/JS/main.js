@@ -75,10 +75,13 @@ const onShowDDL = () => {
 const getListFilm = async (url) => {
   const res = await fetch(url);
   var data= await res.json();
+  console.log(data);
   showData(data);
   applySlider();
 }
 getListFilm(listAPI);
+
+
 const applySlider = () => {
   $(document).ready(function(){
     $('.cinestar__listfilm').slick({
