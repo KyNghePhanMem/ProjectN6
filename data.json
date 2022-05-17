@@ -614,7 +614,7 @@
           "id": 17,
           "category": "vip",
           "price": 60000,
-          "isActive": false,
+          "isActive": true,
           "name": "B4"
         },
         {
