@@ -1,7 +1,7 @@
-var listAPI = "http://localhost:3000/ListFilm";
-var listChair = "http://localhost:3000/listChair";
-var listTime = "http://localhost:3000/listTime";
-var listCombo = "http://localhost:3000/combo";
+var listAPI = "https://cinestar-cinema.herokuapp.com/ListFilm";
+var listChair = "https://cinestar-cinema.herokuapp.com/listChair";
+var listTime = "https://cinestar-cinema.herokuapp.com/listTime";
+var listCombo = "https://cinestar-cinema.herokuapp.com/combo";
 
 var arrChooseChair = [];
 var filmName = "";
@@ -75,7 +75,6 @@ const onShowDDL = () => {
 const getListFilm = async (url) => {
   const res = await fetch(url);
   var data= await res.json();
-  console.log(data);
   showData(data);
   applySlider();
 }

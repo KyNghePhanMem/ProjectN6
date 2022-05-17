@@ -1,7 +1,7 @@
 // Rest API
 
-var loginAPI='http://localhost:3000/User';
-var sessionUser='http://localhost:3000/session';
+var loginAPI='https://cinestar-cinema.herokuapp.com/User';
+var sessionUser='https://cinestar-cinema.herokuapp.com/session';
 
 // Declaration
 var username = document.querySelector("#username");
@@ -27,7 +27,7 @@ const checklogin= () =>{
                     setDataSession(option);
                 }
                 else{
-                    window.location.href="../Main/index.html";
+                    window.location.href="./index.html";
                     option.id=arr[i].id;
                     setDataSession(option);
                 }
