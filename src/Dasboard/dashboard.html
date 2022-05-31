@@ -5,9 +5,276 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+      integrity="sha512-Fo3rlrZj/k7ujTnHg4CGR2D7kSs0v4LLanw2qksYuRlEzO+tcaEPQogQ0KaoGN26/zrn20ImR1DfuLWnOo7aBA=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
     <title>Document</title>
+    <link rel="stylesheet" href="../style/reset.css" />
+    <link rel="stylesheet" href="../style/style.css">
+    <link rel="stylesheet" href="../style/main.css" />
+    <link rel="stylesheet" href="../style/modal.css" />
 </head>
 <body>
-    <h1>Hello Admin</h1>
+    <div class="cinestar__main w-full h-full !overflow-x-hidden">
+        <div class="cinestar__navbar h-[80px] w-full flex justify-between items-center mb-[50px]">
+            <div class="pl-[20px] h-auto cursor-pointer">
+            <a href="#">
+                <img src="../img/Logo-login.png" class="w-[180px]" alt="logo">
+            </a>
+            </div>
+            <div class="pr-[20px] flex gap-x-[20px] items-center">
+            <div class="cinestar__search-bar py-[10px] w-[200px] bg-[#D4D7DA] rounded-[50px] flex gap-x-[5px]">
+                <div class="cinestar__icon-search ml-[15px] mr-[10px]">
+                <i class="fas fa-search"></i>
+                </div>
+                <div class="w-full h-auto">
+                <input type="text" id="search-bar" name="search-bar" class="w-full h-auto" placeholder="Search">
+                </div>
+            </div>
+            <div class="cinestar__contact text-[22px] cursor-pointer">
+                <i class="fa-solid fa-phone"></i>          
+            </div>
+            <div class="cinestar__user rounded-[50px] px-[10px] relative">
+                <div class="flex items-center gap-x-[10px] cinestar__user__block" onclick="onShowDDL();event.stopPropagation();">
+                <div class="cinestar__name text-[16px] leading-[30px]  font-bold text-[#FFFFFF] break-words select-none cursor-pointer">
+                    Admin
+                </div>
+                <div class="cinestar__avatar">
+                    <i class="fa-solid fa-user"></i>
+                </div>
+                </div>
+                <div class="h-[10px] w-full !bg-none absolute top-[30px] right-0"></div>
+                <div class="cinestar__dropdown__user showDDL absolute top-[40px] right-0 bg-gray-300 text-[#293B49] rounded-[3px] text-[14px] w-[150px] py-[10px] px-[8px]">
+                <div class="cinestar__infomation whitespace-nowrap h-auto py-[10px] hover:text-[#208DEC] hover:duration-300">
+                    <a href="#">Đổi mật khẩu</a>
+                </div>
+                <div class="cinestar__logout h-auto py-[10px] hover:text-[#208DEC] hover:duration-300">
+                    <a href="./Login/index.html">Đăng xuất</a>
+                </div>
+                </div>
+            </div>
+            </div>
+        </div>
+        <div class="cinestar__body w-full h-auto grid grid-cols-5 overflow-y-hidden">
+            <div class="cinestar__sidebar col-span-1 pl-[20px]">
+                <div class="cinestar__sidebar-item font-sans  cursor-pointer py-[10px] font-semibold hover:text-[#EE118B] active-sidebar">
+                    <div onclick="manageUser()">
+                    QUẢN LÝ NGƯỜI DÙNG
+                    </div>
+                </div>
+                <div class="cinestar__sidebar-item font-sans  cursor-pointer py-[10px] font-semibold hover:text-[#EE118B]">
+                    <div onclick="manageBill()">
+                    QUẢN LÝ HÓA ĐƠN
+                    </div>
+                </div>
+                <div class="cinestar__sidebar-item font-sans  cursor-pointer py-[10px] font-semibold hover:text-[#EE118B]">
+                    <div onclick="manageFilm()">
+                    QUẢN LÝ PHIM
+                    </div>
+                </div>
+                <div class="cinestar__sidebar-item font-sans  cursor-pointer py-[10px] font-semibold hover:text-[#EE118B]">
+                    <div onclick="manageRoom()">
+                    QUẢN LÝ PHÒNG
+                    </div>
+                </div>
+                <div class="cinestar__sidebar-item font-sans  cursor-pointer py-[10px] font-semibold hover:text-[#EE118B]">
+                    <div onclick="statistics()">
+                    THỐNG KÊ
+                    </div>
+                </div>
+            </div>
+            <div class="cinestar__content col-span-4 w-full ">
+                <div class="cinestar__content__item" id="manageUser">
+                    Quản lý người dùng 
+                </div>
+                <div class="cinestar__content__item max-w-[calc(100%-40px)]" id="manageBill">
+                    <div class="flex justify-between items-center">
+                        <div class="manageRoom__title font-bold text-[24px] mb-[20px]">
+                            <h1>Quản Lý Hóa Đơn</h1>
+                        </div>
+                        <div>
+                            <form class="flex items-center" onsubmit="return FilterBill(event)" enctype="multipart/form-data" id="formSearchBill" method="POST">   
+                                <label for="voice-search" class="sr-only">Search</label>
+                                <div class="relative w-full">
+                                    <div class="flex absolute inset-y-0 left-0 items-center pl-3 pointer-events-none">
+                                        <svg class="w-5 h-5 text-gray-500 dark:text-gray-400" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z" clip-rule="evenodd"></path></svg>
+                                    </div>
+                                    <input type="text" id="voice-search" name="voice-search" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pl-10 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Search..." required>
+                                    <button type="button" class="flex absolute inset-y-0 right-0 items-center pr-3">
+                                        <svg class="w-4 h-4 text-gray-500 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M7 4a3 3 0 016 0v4a3 3 0 11-6 0V4zm4 10.93A7.001 7.001 0 0017 8a1 1 0 10-2 0A5 5 0 015 8a1 1 0 00-2 0 7.001 7.001 0 006 6.93V17H6a1 1 0 100 2h8a1 1 0 100-2h-3v-2.07z" clip-rule="evenodd"></path></svg>
+                                    </button>
+                                </div>
+                                <button type="submit" class="inline-flex items-center py-2.5 px-3 ml-2 text-sm font-medium text-white bg-blue-700 rounded-lg border border-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"><svg class="mr-2 -ml-1 w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>Search</button>
+                            </form>
+                        </div>
+                    </div>
+                    <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
+                        <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
+                            <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+                                <tr class="font-bold">
+                                    <th scope="col" class="px-6 py-3">
+                                        Mã Hóa Đơn
+                                    </th>
+                                    <th scope="col" class="px-6 py-3">
+                                        Tên Hóa Đơn
+                                    </th>
+                                    <th scope="col" class="px-6 py-3">
+                                        Tổng Tiền
+                                    </th>
+                                    <th scope="col" class="px-6 py-3">
+                                        Ngày Lập
+                                    </th>
+                                    <th scope="col" class="px-6 py-3">
+                                        <span class="sr-only">Edit</span>
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody id="listBill">
+                                
+                            </tbody>
+                        </table>
+                    </div>
+                        <input type="checkbox" id="detailBill" class="modal-toggle" />
+                        <div class="modal">
+                            <div class="modal-box relative max-w-fit">
+                                <label for="detailBill" class="btn btn-sm btn-circle absolute right-2 top-2">✕</label>
+                                <div class="p-[20px] text-left text-[#293B49] flex justify-between gap-x-[20px]" id="contentDetail">
+                                    <div class="avatar">
+                                        <div class="w-[190px] rounded-xl">
+                                          <img src="https://vi.qr-code-generator.com/wp-content/themes/qr/new_structure/markets/basic_market/generator/dist/generator/assets/images/websiteQRCode_noFrame.png" />
+                                        </div>
+                                      </div>
+                                    <div class="flex flex-col gap-[8px]" id="contentBill">
+                                        
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                </div>
+                <div class="cinestar__content__item" id="manageFilm">
+                    Quản Lý Phim
+                </div>
+                <div class="cinestar__content__item  max-w-[calc(100%-40px)]" id="manageRoom">
+                    <div class="flex justify-between items-center">
+                        <div class="manageRoom__title font-bold text-[24px] mb-[20px]">
+                            <h1>Quản Lý Phòng</h1>
+                        </div>
+                        <div>
+                            <label for="modalAdd" class="text-white font-bold bg-gray-800 hover:bg-[#FFFFFF] duration-500 hover:!text-[#293B49] focus:outline-none focus:ring-4 focus:ring-gray-300 rounded-lg text-sm px-5 py-2.5 dark:bg-gray-800 dark:hover:bg-gray-700 dark:focus:ring-gray-700 dark:border-gray-700">Add</label>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
+                            <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
+                                <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+                                    <tr class="font-bold">
+                                        <th scope="col" class="px-6 py-3">
+                                            Mã Phòng
+                                        </th>
+                                        <th scope="col" class="px-6 py-3">
+                                            Tên Phòng
+                                        </th>
+                                        <th scope="col" class="px-6 py-3">
+                                            Số Ghế
+                                        </th>
+                                        <th scope="col" class="px-6 py-3">
+                                            Trạng Thái
+                                        </th>
+                                        <th scope="col" class="px-6 py-3">
+                                            <span class="sr-only">Edit</span>
+                                        </th>
+                                    </tr>
+                                </thead>
+                                <tbody id="listTableManageRoom">
+                                    
+                                </tbody>
+                            </table>
+                        </div>
+                        <!-- <label for="my-modal-3" class="btn modal-button">open modal</label> -->
+
+                        
+                        <input type="checkbox" id="my-modal-3" class="modal-toggle" />
+                        <div class="modal">
+                            <div class="modal-box relative">
+                                <label for="my-modal-3" class="btn btn-sm btn-circle absolute right-2 top-2">✕</label>
+                                <div class="p-[20px] text-center">
+                                    <div class="avatar">
+                                        <div class="w-24 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2">
+                                          <img src="https://nld.mediacdn.vn/291774122806476800/2021/10/21/rap-chieu-phim-16347860643071218824167.jpeg" />
+                                        </div>
+                                    </div>
+                                    <h2 class="text-[24px] font-bold text-[#293B49]" id="roomName"></h2>
+                                </div>
+                                <form onsubmit="return hanleEditManageRoom(event)" enctype="multipart/form-data" id="formEditRoom" method="POST">
+                                    <div class="hidden">
+                                        <input type="text" id="roomId" name="roomId">
+                                    </div>
+                                    <div class="flex gap-x-[15px] items-center mb-[20px]">
+                                        <label for="quantityChair" class="text-[#293B49] font-bold w-[100px]">Số Ghế :</label>
+                                        <input type="number" name="quantityChair" placeholder="Type here" id="quantityChair" class="input input-bordered input-success w-full max-w-xs text-[#293B49]" />
+                                    </div>
+                                    <div class="flex gap-x-[15px] items-center mb-[12px]">
+                                        <label for="state" class="text-[#293B49] font-bold w-[100px]">Trạng Thái :</label>
+                                        <select id="state" name="state" class="select select-bordered w-full max-w-xs text-[#293B49]">
+                                            <option disabled selected>Trạng thái hoạt động</option>
+                                            <option value="Active">Đang Hoạt Động</option>
+                                            <option value="Block">Ngừng Hoạt Động</option>
+                                            <option value="New">Sắp Hoạt Động</option>
+                                        </select>
+                                    </div>
+                                    <div class="flex justify-end items-center font-bold gap-x-[12px]">
+                                        <label for="my-modal-3" class="btn btn-outline">Cancel</label>
+                                        <button type="submit" class="btn btn-outline btn-accent">Save</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+
+
+
+                        <input type="checkbox" id="modalAdd" class="modal-toggle" />
+                        <div class="modal">
+                            <div class="modal-box relative">
+                                <label for="modalAdd" class="btn btn-sm btn-circle absolute right-2 top-2">✕</label>
+                                <form onsubmit="return addRoom(event)" enctype="multipart/form-data" id="formEditRoom" method="POST">
+                                    <div class="flex gap-x-[15px] items-center mb-[20px]">
+                                        <label for="roomName" class="text-[#293B49] font-bold w-[100px]">Tên Phòng :</label>
+                                        <input type="text" name="roomName" placeholder="Type here" id="roomName" class="input input-bordered input-success w-full max-w-xs text-[#293B49]" />
+                                    </div>
+                                    <div class="flex gap-x-[15px] items-center mb-[20px]">
+                                        <label for="quantityChair" class="text-[#293B49] font-bold w-[100px]">Số Ghế :</label>
+                                        <input type="number" name="quantityChair" placeholder="Type here" id="quantityChair" class="input input-bordered input-success w-full max-w-xs text-[#293B49]" />
+                                    </div>
+                                    <div class="flex gap-x-[15px] items-center mb-[12px]">
+                                        <label for="state" class="text-[#293B49] font-bold w-[100px]">Trạng Thái :</label>
+                                        <select id="state" name="state" class="select select-bordered w-full max-w-xs text-[#293B49]">
+                                            <option value="New" selected>Sắp Hoạt Động</option>
+                                        </select>
+                                    </div>
+                                    <div class="flex justify-end items-center font-bold gap-x-[12px]">
+                                        <label for="modalAdd" class="btn btn-outline">Cancel</label>
+                                        <button type="submit" class="btn btn-outline btn-accent">Save</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="cinestar__content__item" id="statistics">
+                    Thống kê
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>
+    <script src="../JS/main.js"></script>
 </body>
 </html>

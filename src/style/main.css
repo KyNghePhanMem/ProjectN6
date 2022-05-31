@@ -160,8 +160,18 @@ img{
 .slick-dots .slick-active button{
     background-color: #810D53;
 }
+.manageRoom__title,
 .cinestar__top__titlle{
     position: relative;
+}
+.manageRoom__title::after{
+    position: absolute;
+    content: "";
+    top: 40px;
+    left: 0px;
+    width: 200px;
+    height: 2px;
+    background-color: #FFFFFF;
 }
 .cinestar__top__titlle::after{
     position: absolute;

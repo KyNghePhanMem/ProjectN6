@@ -2,11 +2,14 @@ var listAPI = "https://cinestar-cinema.herokuapp.com/ListFilm";
 var listChair = "https://cinestar-cinema.herokuapp.com/listChair";
 var listTime = "https://cinestar-cinema.herokuapp.com/listTime";
 var listCombo = "https://cinestar-cinema.herokuapp.com/combo";
+var manageRoomApi = "https://cinestar-cinema.herokuapp.com/managerRoom";
+var listBill = "https://cinestar-cinema.herokuapp.com/manageBill";
 
 var arrChooseChair = [];
 var filmName = "";
 var idListChair = 0;
 var totalPrice = 0;
+var lengthRooms = 0;
 const onShowDDL = () => {
     if(document.querySelector('.cinestar__dropdown__user').className.includes("showDDL")){
       document.querySelector('.cinestar__dropdown__user').classList.remove("showDDL");
@@ -71,7 +74,264 @@ const onShowDDL = () => {
     document.getElementById("intro").classList.add("!block");
   }
 
+  const manageUser = () => {
+    for(var i = 0; i < listViewContent.length; i++){
+      if(listViewContent[i].className.includes("!block")){
+        listViewContent[i].classList.remove("!block");
+      }
+    }
+    document.getElementById("manageUser").classList.add("!block");
+  }
+  // --------------------------------------------Thịnh---------------------------------
+  var listData = [];
+  const manageBill = async () => {
+    listData = [];
+    document.getElementById("listBill").innerHTML = ``;
+    const res = await fetch(listBill);
+    const data = await res.json();
+    listData = data;
+    for(let item of data) {
+      document.getElementById("listBill").innerHTML +=`
+      <tr class="bg-white border-b hover:!bg-blue-300 cursor-pointer dark:bg-gray-800 dark:border-gray-700" onclick="onShowDetailBill(${item.id})">
+        <th scope="row" class="px-8 py-4 font-medium text-gray-900 dark:text-white whitespace-nowrap">
+            ${item.billId}
+        </th>
+        <td class="px-6 py-4">
+            ${item.billName}
+        </td>
+        <td class="px-6 py-4">
+            ${item.totalPrice}
+        </td>
+        <td class="px-6 py-4">
+            ${item.date}
+        </td>
+        <td class="px-6 py-4 text-right">
+                <div onclick="handleDeleteBillId(${item.id});event.stopPropagation();" class="hover:bg-red-600 hover:text-[#FFFFFF] w-[25px] duration-500 px-[5px] py-[3px] cursor-pointer border border-solid border-[#293B49] rounded-[2px]">
+                    <i class="fa-solid fa-trash"></i>
+                </div>
+        </td>
+      </tr>
+      `
+    }
+    for(var i = 0; i < listViewContent.length; i++){
+      if(listViewContent[i].className.includes("!block")){
+        listViewContent[i].classList.remove("!block");
+      }
+    }
+    document.getElementById("manageBill").classList.add("!block");
+  }
+  const filterArray = (list) => {
+    for(let item of list){
+      document.getElementById("listBill").innerHTML +=`
+      <tr class="bg-white border-b hover:!bg-blue-300 cursor-pointer dark:bg-gray-800 dark:border-gray-700">
+        <th scope="row" class="px-8 py-4 font-medium text-gray-900 dark:text-white whitespace-nowrap">
+            ${item.billId}
+        </th>
+        <td class="px-6 py-4">
+            ${item.billName}
+        </td>
+        <td class="px-6 py-4">
+            ${item.totalPrice}
+        </td>
+        <td class="px-6 py-4">
+            ${item.date}
+        </td>
+        <td class="px-6 py-4 text-right">
+                <div onclick="handleDeleteBillId(${item.id})" class="hover:bg-red-600 hover:text-[#FFFFFF] w-[25px] duration-500 px-[5px] py-[3px] cursor-pointer border border-solid border-[#293B49] rounded-[2px]">
+                    <i class="fa-solid fa-trash"></i>
+                </div>
+        </td>
+      </tr>
+      `
+    }
+  }
+  const FilterBill = (event) => {
+    event.preventDefault();
+    const myform = new FormData(event.target);
+    const searchValue = myform.get("voice-search");
+    let arr = listData.filter((c) => c.billName.includes(searchValue));
+    document.getElementById("listBill").innerHTML = ``;
+    filterArray(arr);
+    
+  }
+  document.getElementById("voice-search").addEventListener('input',function(){
+    const searchValue = document.getElementById("voice-search").value;
+    let arr = listData.filter((c) => c.billName.includes(searchValue));
+    document.getElementById("listBill").innerHTML = ``;
+    filterArray(arr);
+  })
+  const handleDeleteBillId = async (id) => {
+    await fetch(listBill + "/" +id, {
+      method: 'DELETE',
+    });
+    manageBill();
+  }
+  const onShowDetailBill = async (id) => {
+    document.getElementById("contentBill").innerHTML = ``;
+    const res = await fetch(listBill + '/' +id)
+    const data = await res.json();
 
+    document.getElementById("contentBill").innerHTML = `
+    <div>
+        <span> <strong>Rạp Chiếu Phim : </strong> ${data.cinema}</span>
+    </div>
+    <div>
+        <span> <strong>Mã Hóa Đơn :</strong> ${data.billId}</span>
+    </div>
+    <div>
+        <span> <strong>Người thanh toán :</strong> ${data.billName}</span>
+    </div>
+    <div>
+        <span> <strong>Phòng Chiếu :</strong> ${data.roomName}</span>
+    </div>
+    <div>
+        <span> <strong>Tên Phim :</strong> ${data.filmName}</span>
+    </div>
+    <div>
+        <span> <strong>Ghế Ngồi :</strong> ${data.chairsName}</span>
+    </div>
+    <div>
+        <span> <strong>Combo :</strong> ${data.combo}</span>
+    </div>
+    <div>
+        <span> <strong>Tổng Tiền :</strong> ${data.totalPrice}</span>
+    </div>
+    `;
+    document.getElementById("detailBill").checked = true;
+
+  }
+  // ------------------------------------------------Thịnh---------------------------------
+  const manageFilm = () => {
+    for(var i = 0; i < listViewContent.length; i++){
+      if(listViewContent[i].className.includes("!block")){
+        listViewContent[i].classList.remove("!block");
+      }
+    }
+    document.getElementById("manageFilm").classList.add("!block");
+  }
+  // ------------------------------Trung-------------------------------------
+  const manageRoom = async () => {
+    lengthRooms = 0;
+    document.getElementById("listTableManageRoom").innerHTML = ``;
+    const res = await fetch(manageRoomApi);
+    const data = await res.json();
+    lengthRooms = data.length;
+    for(let item of data){
+      document.getElementById("listTableManageRoom").innerHTML += `
+      <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+        <th scope="row" class="px-8 py-4 font-medium text-gray-900 dark:text-white whitespace-nowrap">
+            ${item.id}
+        </th>
+        <td class="px-6 py-4">
+            ${item.name}
+        </td>
+        <td class="px-6 py-4">
+            ${item.quantityChair}
+        </td>
+        <td class="px-6 py-4">
+            ${item.state}
+        </td>
+        <td class="px-6 py-4 text-right">
+            <div class="flex gap-x-[10px] items-center">
+                <lable onclick="editRoomID(${item.id})" class="hover:bg-[#208DEC] hover:text-[#FFFFFF] duration-500 px-[5px] py-[3px] cursor-pointer border border-solid border-[#293B49] rounded-[2px]">
+                    <i class="fa-solid fa-pen-to-square"></i>
+                </lable>
+                <div onclick="handleDeleteRoomId(${item.id})" class="hover:bg-red-600 hover:text-[#FFFFFF] duration-500 px-[5px] py-[3px] cursor-pointer border border-solid border-[#293B49] rounded-[2px]">
+                    <i class="fa-solid fa-trash"></i>
+                </div>
+            </div>
+        </td>
+      </tr>
+      `
+    }
+    for(var i = 0; i < listViewContent.length; i++){
+      if(listViewContent[i].className.includes("!block")){
+        listViewContent[i].classList.remove("!block");
+      }
+    }
+    document.getElementById("manageRoom").classList.add("!block");
+  }
+
+  const editRoomID = async (id) => {
+    document.getElementById("quantityChair").value = "";
+    document.getElementById("state").value = "";
+    document.getElementById("roomName").innerHTML = ``;
+    document.getElementById("my-modal-3").checked = true;
+    const roomItem = await fetch(manageRoomApi + "/"+ id);
+    const data = await roomItem.json();
+    
+    document.getElementById("quantityChair").value = `${data.quantityChair}`
+    document.getElementById("roomName").innerHTML = `${data.name}`
+    document.getElementById("state").value = `${data.state}`
+    document.getElementById("roomId").value = `${data.id}`
+  }
+
+  const hanleEditManageRoom = async (event) => {
+    event.preventDefault();
+    const myform = new FormData(event.target);
+    const quantityChair = myform.get("quantityChair");
+    const state = myform.get("state")
+    const roomId = myform.get("roomId")
+    const name = document.getElementById("roomName").innerHTML;
+    
+    let obj = {
+      id:roomId,
+      name:name,
+      quantityChair:quantityChair,
+      state:state
+    }
+    const response = await fetch(manageRoomApi + "/" + roomId, {
+      method: 'PUT', 
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(obj)
+     });
+    const dataAfter = await response.json();
+
+    manageRoom();
+    document.getElementById("my-modal-3").checked = false;
+  }
+  const handleDeleteRoomId = async (id) => {
+    await fetch(manageRoomApi + "/" +id, {
+      method: 'DELETE',
+    });
+    manageRoom();
+  }
+
+  const addRoom = async (event) => {
+    event.preventDefault();
+    const myform = new FormData(event.target);
+    const quantityChair = myform.get("quantityChair");
+    const state = myform.get("state")
+    const name = myform.get("roomName");
+    
+    let obj = {
+      id:lengthRooms + 1,
+      name:name,
+      quantityChair:quantityChair,
+      state:state
+    }
+    const res = await fetch(manageRoomApi, {
+      method: 'POST',
+      body: JSON.stringify(obj),
+      headers: {
+        'Content-type': 'application/json; charset=UTF-8',
+      },
+    })
+    const dataAfter = await res.json();
+    manageRoom();
+    document.getElementById("modalAdd").checked = false;
+  }
+  // ------------------------------------Trung---------------------------------------
+  const statistics = () => {
+    for(var i = 0; i < listViewContent.length; i++){
+      if(listViewContent[i].className.includes("!block")){
+        listViewContent[i].classList.remove("!block");
+      }
+    }
+    document.getElementById("statistics").classList.add("!block");
+  }
 const getListFilm = async (url) => {
   const res = await fetch(url);
   var data= await res.json();

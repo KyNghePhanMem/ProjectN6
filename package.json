@@ -7,5 +7,8 @@
   },
   "scripts": {
     "dev": "postcss tailwind.css -o ./src/style/style.css --watch --verbose"
+  },
+  "dependencies": {
+    "daisyui": "^2.15.2"
   }
 }

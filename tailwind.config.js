@@ -9,5 +9,5 @@ module.exports = {
     },
     extends:{},
   },
-  plugins: [],
+  plugins: [require("daisyui")],
 }
